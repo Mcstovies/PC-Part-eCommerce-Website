@@ -1,7 +1,15 @@
 <!-- http://localhost/codespaceproject/create.php !-->
- 
+
 <?php
  include 'includes/nav.php';
+
+# Open database connection.
+    require ('connect_db.php');
+
+        # Retrieve items from 'products' database table.
+        $q = "SELECT * FROM products" ;
+        $r = mysqli_query( $link, $q) ;
+        if ( mysqli_num_rows ( $r ) > 0)
 ?>
 
 <?php
