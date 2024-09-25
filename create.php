@@ -1,8 +1,11 @@
- <?php
- include 'nav.php';
-?>
+<!-- http://localhost/codespaceproject/create.php !-->
+ 
 <?php
- include 'footer.php';
+ include 'includes/nav.php';
+?>
+
+<?php
+ include 'includes/footer.php';
 ?>
 
 <?php
