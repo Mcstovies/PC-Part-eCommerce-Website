@@ -1,6 +1,8 @@
 <?php
 # Include navigation 
 include('includes/nav.php');
+# Open database connection.
+require('connect_db.php');
 
 # Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
