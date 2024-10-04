@@ -3,8 +3,8 @@ include 'includes/nav.php'; // Include navigation bar
 include 'connect_db.php'; // Include database connection
 
 // Query to retrieve all products from the database
-$sql = "SELECT item_id, name, item_price, description FROM products";
-$result = $conn->query($sql);
+$sql = "SELECT item_id, item_name, item_price, item_desc FROM products";
+$result = $link->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -46,12 +46,12 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
                 <td>" . $row['item_id'] . "</td>
-                <td>" . $row['name'] . "</td>
+                <td>" . $row['item_name'] . "</td>
                 <td>$" . $row['item_price'] . "</td>
                 <td>" . $row['item_desc'] . "</td>
                 <td>
-                    <a href='update.php?id=" . $row['id'] . "'>Edit</a> | 
-                    <a href='delete.php?id=" . $row['id'] . "'>Delete</a>
+                    <a href='update.php?id=" . $row['item_id'] . "'>Edit</a> | 
+                    <a href='delete.php?id=" . $row['item_id'] . "'>Delete</a>
                 </td>
               </tr>";
     }
@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
     echo "No products found.";
 }
 
-$conn->close(); // Close the database connection
+$link->close(); // Close the database connection
 ?>
 
 </body>
