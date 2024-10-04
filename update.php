@@ -7,11 +7,11 @@ require('connect_db.php');
 
 # Check if the item ID is provided via GET (to load the current data)
 if (isset($_GET['id'])) {
-    $item_id = mysqli_real_escape_string($conn, trim($_GET['id']));
+    $item_id = mysqli_real_escape_string($link, trim($_GET['id']));
 
     # Fetch the current item details from the database
     $q = "SELECT * FROM products WHERE item_id='$item_id'";
-    $r = @mysqli_query($conn, $q);
+    $r = @mysqli_query($link, $q);
 
     # If the item exists, store its current data
     if ($r && mysqli_num_rows($r) == 1) {
@@ -32,35 +32,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['item_id'])) {
         $errors[] = 'Item ID is missing.'; 
     } else {
-        $id = mysqli_real_escape_string($conn, trim($_POST['item_id']));
+        $id = mysqli_real_escape_string($link, trim($_POST['item_id']));
     }
 
     # Check for item name
     if (empty($_POST['item_name'])) {
         $errors[] = 'Please provide the item name.'; 
     } else {
-        $n = mysqli_real_escape_string($conn, trim($_POST['item_name']));
+        $n = mysqli_real_escape_string($link, trim($_POST['item_name']));
     }
 
     # Check for item description
     if (empty($_POST['item_desc'])) {
         $errors[] = 'Please provide the item description.'; 
     } else {
-        $d = mysqli_real_escape_string($conn, trim($_POST['item_desc']));
+        $d = mysqli_real_escape_string($link, trim($_POST['item_desc']));
     }
 
     # Check for item image
     if (empty($_POST['item_img'])) {
         $errors[] = 'Please provide the image URL.'; 
     } else {
-        $img = mysqli_real_escape_string($conn, trim($_POST['item_img']));
+        $img = mysqli_real_escape_string($link, trim($_POST['item_img']));
     }
 
     # Check for item price
     if (empty($_POST['item_price'])) {
         $errors[] = 'Please provide the item price.'; 
     } else {
-        $p = mysqli_real_escape_string($conn, trim($_POST['item_price']));
+        $p = mysqli_real_escape_string($link, trim($_POST['item_price']));
     }
 
     # If no errors, proceed with the update
@@ -69,18 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $q = "UPDATE products 
               SET item_name='$n', item_desc='$d', item_img='$img', item_price='$p' 
               WHERE item_id='$id'";
-        $r = @mysqli_query($conn, $q);
+        $r = @mysqli_query($link, $q);
 
         # If the query is successful, redirect to read.php
         if ($r) {
             header("Location: read.php");
             exit();
         } else {
-            echo "Error updating record: " . mysqli_error($conn);
+            echo "Error updating record: " . mysqli_error($link);
         }
 
         # Close the database connection
-        mysqli_close($conn);
+        mysqli_close($link);
     } else {
         # Print the errors
         foreach ($errors as $msg) {
