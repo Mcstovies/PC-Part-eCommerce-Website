@@ -1,8 +1,9 @@
-<?php include 'includes/nav_general.php'; ?>
+<?php 
+// Include the navbar
+include 'includes/nav_general.php';
 
-<?php
 // Include database connection
-include 'connect_db.php';
+include 'connect_db.php'; 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,14 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if user exists by email
     $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $link->prepare($sql);
     $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        // Verify the password with hashed password from the database
+
+        // Debugging: Print values for verification
+        echo "Entered Password: " . $password . "<br>";
+        echo "Hashed Password from DB: " . $user['pass'] . "<br>";
+        
+        // Verify the entered password with the hashed password stored in the database
         if (password_verify($password, $user['pass'])) {
             // Set session variable to identify logged-in user
             $_SESSION['user_id'] = $user['user_id']; 
@@ -29,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "User not found!";
     }
+
     $stmt->close();
 }
 ?>
