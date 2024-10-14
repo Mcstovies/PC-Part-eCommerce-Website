@@ -1,3 +1,5 @@
+<?php include 'includes/nav_general.php'; ?>
+
 <?php
 // Include database connection
 include 'connect_db.php';
