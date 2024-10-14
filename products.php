@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 include 'connect_db.php';
 
 $sql = "SELECT * FROM products";
-$result = $conn->query($sql);
+$result = $link->query($sql);
 
 echo "<h1>Products</h1>";
 while ($product = $result->fetch_assoc()) {

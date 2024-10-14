@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $result->fetch_assoc();
 
         // Debugging: Print values for verification
-        echo "Entered Password: " . $password . "<br>";
-        echo "Hashed Password from DB: " . $user['pass'] . "<br>";
+        // echo "Entered Password: " . $password . "<br>";
+        // echo "Hashed Password from DB: " . $user['pass'] . "<br>";
         
         // Verify the entered password with the hashed password stored in the database
         if (password_verify($password, $user['pass'])) {
