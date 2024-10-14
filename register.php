@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insert user into the database
     $sql = "INSERT INTO users (first_name, last_name, email, pass, reg_date) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn ->prepare($sql);
+    $stmt = $link ->prepare($sql);
     $stmt->bind_param('sssss', $first_name, $last_name, $email, $password, $reg_date);
 
     if ($stmt->execute()) {
