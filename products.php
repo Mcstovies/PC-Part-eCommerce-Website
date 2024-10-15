@@ -53,7 +53,7 @@ while ($product = $result->fetch_assoc()) {
     echo "<p class='card-text'><strong>$" . $product['item_price'] . "</strong></p>";
     // Add "Add to Cart" button form
     echo "<form method='POST' action=''>";
-    echo "<input type='hidden' name='product_id' value='" . $product['id'] . "'>";
+    echo "<input type='hidden' name='product_id' value='" . $product['item_id'] . "'>";
     echo "<input type='hidden' name='product_name' value='" . $product['item_name'] . "'>";
     echo "<input type='hidden' name='product_price' value='" . $product['item_price'] . "'>";
     echo "<button type='submit' class='btn btn-primary'>Add to Cart</button>";
