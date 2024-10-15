@@ -2,7 +2,7 @@
 session_start();
 include 'includes/nav_general.php';
 
-echo "<h1>Welcome to MKTIME!</h1>";
+echo "<h1>Welcome to MKPC!</h1>";
 echo "<p>Discover the best products!</p>";
 
 if (isset($_SESSION['user_id'])) {
