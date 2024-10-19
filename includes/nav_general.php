@@ -15,8 +15,17 @@
                 <li class="nav-item">
                     <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'login.php' ? 'active' : ''; ?>" href="login.php">Login</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : ''; ?>" href="products.php">Products</a>
+                
+                <!-- Products Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?php echo basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : ''; ?>" href="products.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Products
+                    </a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-white" href="graphics_card.php">Graphics Cards</a></li>
+                        <li><a class="dropdown-item text-white" href="cpu.php">CPUs</a></li>
+                        <li><a class="dropdown-item text-white" href="memory.php">Memory Cards</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -42,5 +51,18 @@
     .nav-link.active {
         background-color: #ff4d4d; /* Highlight active page */
         color: white; /* Keep text white */
+    }
+
+    .dropdown-menu {
+        background-color: #333 !important; /* Dark background for dropdown */
+    }
+
+    .dropdown-item {
+        color: white !important; /* White text for dropdown items */
+    }
+
+    .dropdown-item:hover {
+        background-color: #ff4d4d !important; /* Red background on hover for dropdown items */
+        color: white !important;
     }
 </style>
