@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
         echo "<tr>
                 <td>" . $row['item_id'] . "</td>
                 <td>" . $row['item_name'] . "</td>
-                <td>$" . $row['item_price'] . "</td>
+                <td>£" . $row['item_price'] . "</td>
                 <td>" . $row['item_desc'] . "</td>
                 <td>
                     <a href='update.php?id=" . $row['item_id'] . "'>Edit</a> | 

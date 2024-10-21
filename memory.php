@@ -47,7 +47,7 @@ while ($product = $result->fetch_assoc()) {
     echo "<div class='card-body'>";
     echo "<h5 class='card-title'>" . $product['item_name'] . "</h5>";
     echo "<p class='card-text'>" . $product['item_desc'] . "</p>";
-    echo "<p class='card-text'><strong>$" . $product['item_price'] . "</strong></p>";
+    echo "<p class='card-text'><strong>£" . $product['item_price'] . "</strong></p>";
     echo "<form method='POST' action=''>";
     echo "<input type='hidden' name='product_id' value='" . $product['item_id'] . "'>";
     echo "<input type='hidden' name='product_name' value='" . $product['item_name'] . "'>";
