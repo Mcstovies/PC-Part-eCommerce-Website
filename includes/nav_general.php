@@ -22,7 +22,7 @@
                         Products
                     </a>
                     <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-white" href="graphics_card.php">Graphics Cards</a></li>
+                        <li><a class="dropdown-item text-white" href="graphics.php">Graphics Cards</a></li>
                         <li><a class="dropdown-item text-white" href="cpu.php">CPUs</a></li>
                         <li><a class="dropdown-item text-white" href="memory.php">Memory Cards</a></li>
                     </ul>
