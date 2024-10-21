@@ -40,9 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $p = mysqli_real_escape_string($link, trim($_POST['item_price']));
     }
 
+    // Check for category
+    if (empty($_POST['category'])) {
+        $errors[] = 'Enter the category.';
+    } else {
+        $cat = mysqli_real_escape_string($link, trim($_POST['category']));
+    }
+
     // On success, insert data into the database
     if (empty($errors)) {
-        $q = "INSERT INTO products (item_name, item_desc, item_img, item_price) VALUES ('$n', '$d', '$img', '$p')";
+        $q = "INSERT INTO products (item_name, item_desc, item_img, item_price, category) 
+              VALUES ('$n', '$d', '$img', '$p', '$cat')";
         $r = @mysqli_query($link, $q);
         if ($r) {
             echo '<p>New record created successfully.</p>';
@@ -76,6 +84,7 @@ if (mysqli_num_rows($r) > 0) {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">&pound' . $row['item_price'] . '</li>
+                    <li class="list-group-item text-center">Category: ' . $row['category'] . '</li>
                     <li class="list-group-item btn btn-dark">
                         <a class="btn btn-dark btn-lg btn-block" href="update.php?id=' . $row['item_id'] . '">Update</a>
                     </li>
@@ -110,6 +119,9 @@ mysqli_close($link);
     <label for="item_price">Price:</label>
     <input type="number" id="item_price" class="form-control" name="item_price" min="0" step="0.01" required value="<?php if (isset($_POST['item_price'])) echo $_POST['item_price']; ?>"><br>
 
+    <label for="category">Category:</label>
+    <input type="text" id="category" class="form-control" name="category" required value="<?php if (isset($_POST['category'])) echo $_POST['category']; ?>"><br>
+
     <input type="submit" class="btn btn-dark" value="Add Item">
 </form>
 
@@ -117,5 +129,6 @@ mysqli_close($link);
 // Include footer
 include 'includes/footer.php';
 ?>
+
 
 
