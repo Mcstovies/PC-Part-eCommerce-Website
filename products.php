@@ -1,11 +1,13 @@
-<?php include 'includes/nav_general.php'; ?>
-
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); // Redirect to login page if not logged in
     exit;
 }
+
+
+include 'includes/nav_general.php';
+
 
 // If user is logged in, display products
 include 'connect_db.php';
@@ -68,4 +70,3 @@ echo "</div>"; // End of container
 ?>
 
 <a href="cart.php" class="btn btn-info mt-3">View Cart</a>
-<a href="logout.php" class="btn btn-danger mt-3">Logout</a>

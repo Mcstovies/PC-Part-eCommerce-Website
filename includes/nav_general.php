@@ -15,7 +15,7 @@
                 <li class="nav-item">
                     <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'login.php' ? 'active' : ''; ?>" href="login.php">Login</a>
                 </li>
-                
+
                 <!-- Products Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle <?php echo basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : ''; ?>" href="products.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,6 +28,10 @@
                     </ul>
                 </li>
             </ul>
+
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="logout.php" class="btn btn-danger ms-auto">Logout</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
