@@ -1,11 +1,11 @@
-<?php include 'includes/nav_general.php'; ?>
-
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); // Redirect to login page if not logged in
     exit;
 }
+
+include 'includes/nav_general.php';
 
 include 'connect_db.php';
 

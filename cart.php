@@ -1,10 +1,11 @@
-<?php include 'includes/nav_general.php'; ?>
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); // Redirect to login page if not logged in
     exit;
 }
+
+include 'includes/nav_general.php';
 
 // Handle removing items from the cart
 if (isset($_POST['remove'])) {
@@ -69,4 +70,4 @@ echo "</div>";
 ?>
 
 <a href="products.php" class="btn btn-primary mt-3">Continue Shopping</a>
-<a href="logout.php" class="btn btn-danger mt-3">Logout</a>
+
