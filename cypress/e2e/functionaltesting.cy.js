@@ -29,3 +29,24 @@ describe('Add Product to Cart', () => {
       cy.get('table tbody tr').should('have.length.greaterThan', 0); // Verify cart has at least 1 item
   });
 });
+
+describe('Update Cart Quantity', () => {
+  it('should increase quantity when adding the same product again', () => {
+    cy.visit('http://localhost/codespaceproject/products.php'); // Navigate to products page
+    cy.url().should('include', '/login.php'); // Verify redirected to login
+    cy.get('form').within(() => {
+        cy.get('input[name="email"]').type('123@gmail.com'); // Enter email
+        cy.get('input[name="password"]').type('123'); // Enter password
+        cy.get('button[type="submit"]').click(); // Submit login form
+    });
+      cy.get('.card').first().within(() => {
+          cy.get('button').contains('Add to Cart').click(); // Add product to cart
+      });
+      cy.get('.alert').should('contain', 'Product added to cart!'); // Check success message
+      cy.get('.card').first().within(() => {
+          cy.get('button').contains('Add to Cart').click(); // Add product again
+      });
+      cy.get('a').contains('View Cart').click(); // Go to cart
+      cy.get('table tbody tr').first().should('contain', '2'); // Verify quantity increased to 2
+  });
+});
