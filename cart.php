@@ -47,7 +47,7 @@ if (!empty($_SESSION['cart'])) {
         echo "<button type='submit' name='update' class='btn btn-sm btn-primary'>Update</button>";
         echo "</form>";
         echo "</td>";
-        echo "<td>$" . $product_total . "</td>";
+        echo "<td>£" . $product_total . "</td>";
         echo "<td>";
         // Remove from cart form
         echo "<form method='POST' action=''>";
