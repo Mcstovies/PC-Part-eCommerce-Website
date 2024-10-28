@@ -1,21 +1,16 @@
 <?php
-// Include the navbar
-include 'includes/nav_general.php';
-
-// Start session
+// Start session and include necessary files
 session_start();
+include 'includes/nav_general.php'; // Navbar
+include 'connect_db.php'; // Database connection
 
-// Include database connection
-include 'connect_db.php';
-
-// Check if cookies exist and attempt automatic login
+// Check if cookies exist for automatic login
 if (isset($_COOKIE['user_email']) && isset($_COOKIE['user_token'])) {
     $email = $_COOKIE['user_email'];
     $token = $_COOKIE['user_token'];
-
-    // Verify the session token matches the current session (as an extra security measure)
+    
+    // Verify session token matches current session for security
     if ($token === session_id()) {
-        // Retrieve the user_id from the database based on the email in the cookie
         $sql = "SELECT user_id FROM users WHERE email = ?";
         $stmt = $link->prepare($sql);
         $stmt->bind_param('s', $email);
@@ -24,25 +19,23 @@ if (isset($_COOKIE['user_email']) && isset($_COOKIE['user_token'])) {
 
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
-            // Automatically log the user in
             $_SESSION['user_id'] = $user['user_id'];
-            header('Location: products.php'); // Redirect to the products page
+            header('Location: products.php'); // Redirect to products page
             exit;
         }
     } else {
-        // Invalidate the cookies if the session token doesn't match
+        // Invalidate cookies if session token doesn't match
         setcookie('user_email', '', time() - 3600, "/");
         setcookie('user_token', '', time() - 3600, "/");
     }
 }
 
-// Handle manual login
+// Handle manual login form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $remember = isset($_POST['remember']); // Check if the "Remember Me" box is checked
+    $remember = isset($_POST['remember']); // "Remember Me" checkbox
 
-    // Check if user exists by email
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $link->prepare($sql);
     $stmt->bind_param('s', $email);
@@ -52,38 +45,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         
-        // Verify the entered password with the hashed password stored in the database
         if (password_verify($password, $user['pass'])) {
-            // Set session variable to identify logged-in user
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['email'] = $user['email'];
 
-            // If "Remember Me" is checked, set cookies for email and token
             if ($remember) {
                 setcookie('user_email', $email, time() + (86400 * 30), "/"); // 30 days
-                setcookie('user_token', session_id(), time() + (86400 * 30), "/"); // Store session ID as a token
+                setcookie('user_token', session_id(), time() + (86400 * 30), "/");
             }
 
-            header('Location: products.php'); // Redirect to the protected products page
+            header('Location: products.php'); // Redirect to products
             exit;
         } else {
-            echo "Invalid password!";
+            $error = "Invalid password!";
         }
     } else {
-        echo "User not found!";
+        $error = "User not found!";
     }
 
     $stmt->close();
 }
 ?>
 
-<form method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <label>
-        <input type="checkbox" name="remember"> Remember Me
-    </label>
-    <button type="submit">Login</button>
-</form>
+<!-- Bootstrap Login Form Section -->
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
 
-<?php include 'includes/footer.php'; // Include footer
+                        <h3 class="mb-5">Sign in</h3>
+
+                        <!-- Display error message if login failed -->
+                        <?php if (isset($error)): ?>
+                            <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <?php endif; ?>
+
+                        <form method="POST" action="login.php">
+                            <div class="form-outline mb-4">
+                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" name="email" placeholder="Email" required />
+                                <label class="form-label" for="typeEmailX-2">Email</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" name="password" placeholder="Password" required />
+                                <label class="form-label" for="typePasswordX-2">Password</label>
+                            </div>
+
+                            <!-- Remember Me Checkbox -->
+                            <div class="form-check d-flex justify-content-start mb-4">
+                                <input class="form-check-input" type="checkbox" name="remember" id="form1Example3" />
+                                <label class="form-check-label" for="form1Example3"> Remember password </label>
+                            </div>
+
+                            <!-- Login Button -->
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                        </form>
+
+                        <hr class="my-4">
+
+                        <!-- Social Sign-In Buttons -->
+                        <button class="btn btn-lg btn-block mb-2" style="background-color: #dd4b39; color: white;" type="button">
+                            <i class="fab fa-google me-2"></i> Sign in with Google
+                        </button>
+                        <button class="btn btn-lg btn-block mb-2" style="background-color: #3b5998; color: white;" type="button">
+                            <i class="fab fa-facebook-f me-2"></i> Sign in with Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php include 'includes/footer.php'; // Footer ?>

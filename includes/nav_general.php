@@ -42,6 +42,9 @@
 <!-- Bootstrap JS (for toggler) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
     .nav-link {
         color: white !important; /* White text for navbar links */
