@@ -70,18 +70,6 @@ include 'includes/nav_general.php';
     </div>
 </div>
 
-<!-- Welcome Message and Options -->
-<div class="container text-center">
-    <h1>Welcome to MKPC!</h1>
-    <p>Discover the best products!</p>
-    
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="products.php" class="btn btn-primary">View Products</a>
-    <?php else: ?>
-        <a href="register.php" class="btn btn-success">Register</a> or 
-        <a href="login.php" class="btn btn-info">Login</a>
-    <?php endif; ?>
-</div>
 
 <!-- Featured Products or Categories Section -->
 <div class="container mt-5">
