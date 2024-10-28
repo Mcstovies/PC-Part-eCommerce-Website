@@ -27,7 +27,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<div class="container py-5">
+<style>
+    /* Full page black background */
+    body {
+        background-color: #121212;
+        color: white; /* White text for contrast */
+    }
+    
+    /* Centering container with dark card */
+    .container {
+        padding-top: 50px;
+    }
+
+    .card {
+        background-color: #333;
+        color: white;
+    }
+
+    .form-control {
+        background-color: #222;
+        color: white;
+        border: 1px solid #555;
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+    }
+
+    .btn-primary {
+        background-color: #ff4d4d;
+        border-color: #ff4d4d;
+    }
+
+    .btn-primary:hover {
+        background-color: #ff6666;
+        border-color: #ff6666;
+    }
+</style>
+
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg">
@@ -55,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
             <p class="text-center mt-3">
-                Already have an account? <a href="login.php">Login here</a>.
+                Already have an account? <a href="login.php" class="text-info">Login here</a>.
             </p>
         </div>
     </div>
