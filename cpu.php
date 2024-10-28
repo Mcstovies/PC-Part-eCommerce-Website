@@ -37,7 +37,7 @@ $sql = "SELECT * FROM products WHERE category = 'CPU'";
 $result = $link->query($sql);
 
 echo "<div class='container mt-5'>";
-echo "<h1 class='text-center mb-4 text-white'>Graphics Cards</h1>";
+echo "<h1 class='text-center mb-4 text-white'>CPUs</h1>";
 echo "<div class='row'>";
 while ($product = $result->fetch_assoc()) {
     echo "<div class='col-md-4 mb-4'>";
