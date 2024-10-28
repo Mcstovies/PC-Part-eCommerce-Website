@@ -44,7 +44,7 @@ while ($product = $result->fetch_assoc()) {
     echo "<img src='" . $product['item_img'] . "' class='card-img-top product-img' alt='" . $product['item_name'] . "'>";
     echo "<div class='card-body text-center'>";
     echo "<h5 class='card-title product-title text-white'>" . $product['item_name'] . "</h5>";
-    echo "<p class='card-text product-desc text-muted'>" . $product['item_desc'] . "</p>";
+    echo "<p class='card-text product-desc'>" . $product['item_desc'] . "</p>";
     echo "<p class='card-text product-price'><strong>£" . $product['item_price'] . "</strong></p>";
     echo "<form method='POST' action=''>";
     echo "<input type='hidden' name='product_id' value='" . $product['item_id'] . "'>";
@@ -92,7 +92,7 @@ body {
 }
 .product-desc {
     font-size: 0.9rem;
-    color: #ccc;
+    color: #fff;
 }
 .product-price {
     font-size: 1.2rem;
