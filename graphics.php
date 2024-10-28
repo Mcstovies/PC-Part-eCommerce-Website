@@ -69,3 +69,4 @@ echo "</div>"; // End of container
 
 <a href="cart.php" class="btn btn-info mt-3">View Cart</a>
 
+<?php include 'includes/footer.php'; // Include footer ?>

@@ -65,3 +65,5 @@ echo "</div>";
 
 <a href="cart.php" class="btn btn-info mt-3">View Cart</a>
 <a href="logout.php" class="btn btn-danger mt-3">Logout</a>
+
+<?php include 'includes/footer.php'; // Include footer

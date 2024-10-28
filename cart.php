@@ -67,6 +67,9 @@ if (!empty($_SESSION['cart'])) {
 }
 
 echo "</div>";
+
+include 'includes/footer.php'; // Include footer
+
 ?>
 
 <a href="products.php" class="btn btn-primary mt-3">Continue Shopping</a>

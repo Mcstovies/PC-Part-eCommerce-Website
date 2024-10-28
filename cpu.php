@@ -61,6 +61,9 @@ while ($product = $result->fetch_assoc()) {
 
 echo "</div>";
 echo "</div>";
+
+include 'includes/footer.php'; // Include footer
+
 ?>
 
 <a href="cart.php" class="btn btn-info mt-3">View Cart</a>

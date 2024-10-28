@@ -49,6 +49,8 @@ if ($stmt_order->execute()) {
     echo "<p>Error placing order: " . $stmt_order->error . "</p>";
 }
 
+include 'includes/footer.php'; // Include footer
+
 // Close the statement and connection
 $stmt_order->close();
 $link->close();
