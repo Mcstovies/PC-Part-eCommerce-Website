@@ -51,6 +51,9 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+
 <style>
     .nav-link {
         color: white !important; /* White text for navbar links */
@@ -78,4 +81,11 @@
         background-color: #ff4d4d !important; /* Red background on hover for dropdown items */
         color: white !important;
     }
+
+    .navbar-brand {
+    font-family: 'Roboto Slab', serif; /* Change to the font you choose */
+    font-size: 1.8rem; /* Adjust font size as needed */
+    letter-spacing: 1px; /* Add spacing for a modern look */
+}
+
 </style>
