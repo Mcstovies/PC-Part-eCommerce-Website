@@ -60,7 +60,7 @@ if (!empty($_SESSION['cart'])) {
 
     echo "</tbody>";
     echo "</table>";
-    echo "<h3>Total Price: $" . $total_price . "</h3>";
+    echo "<h3>Total Price: £" . $total_price . "</h3>";
     echo "<a href='checkout.php' class='btn btn-success'>Proceed to Checkout</a>";
 } else {
     echo "<p>Your cart is empty.</p>";
