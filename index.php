@@ -3,28 +3,117 @@ session_start();
 include 'includes/nav_general.php';
 ?>
 
-<!--Jumbotron Section -->
-<div class="jumbotron jumbotron-fluid bg-dark text-white">
-    <div class="contained text-center">
+<style>
+    /* Full page black background */
+    body {
+        background-color: #121212;
+        color: white;
+    }
+
+    /* Jumbotron styling */
+    .jumbotron {
+        background-color: #333;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .jumbotron h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .jumbotron p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .jumbotron .btn {
+        padding: 10px 30px;
+        font-size: 1.1rem;
+    }
+
+    /* Container styling */
+    .container {
+        padding: 40px 0;
+    }
+
+    /* Feature section */
+    .feature {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .feature img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .feature h4 {
+        color: #ff4d4d;
+    }
+
+    .feature p {
+        font-size: 1rem;
+        color: #aaa;
+    }
+</style>
+
+<!-- Jumbotron Section -->
+<div class="jumbotron jumbotron-fluid text-white">
+    <div class="container">
         <h1 class="display-4">Build Your Dream PC</h1>
-        <p class="lead">Explore the best PC components and accessories for your next build.</p>
+        <p class="lead">Explore top PC components and accessories for your next build.</p>
         <a href="products.php" class="btn btn-danger btn-lg">Shop Now</a>
     </div>
-  </div>
+</div>
 
+<!-- Welcome Message and Options -->
+<div class="container text-center">
+    <h1>Welcome to MKPC!</h1>
+    <p>Discover the best products!</p>
+    
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="products.php" class="btn btn-primary">View Products</a>
+    <?php else: ?>
+        <a href="register.php" class="btn btn-success">Register</a> or 
+        <a href="login.php" class="btn btn-info">Login</a>
+    <?php endif; ?>
+</div>
 
-<?php
-// Welcome message and options based on user login status
-echo "<div class='container text-center mt-5'>";
-echo "<h1>Welcome to MKPC!</h1>";
-echo "<p>Discover the best products!</p>";
+<!-- Featured Products or Categories Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Our Top Categories</h2>
+    <div class="row">
+        <!-- Graphics Cards Feature -->
+        <div class="col-md-4">
+            <div class="feature">
+                <img src="img/graphiccard1.jpg" alt="Graphics Cards">
+                <h4>High-Performance Graphics Cards</h4>
+                <p>Power up your rig with the latest and most powerful GPUs.</p>
+            </div>
+        </div>
+        
+        <!-- CPUs Feature -->
+        <div class="col-md-4">
+            <div class="feature">
+                <img src="img/CPU.webp" alt="CPUs">
+                <h4>Processors for Every Need</h4>
+                <p>Find CPUs that meet the demands of gaming, work, and more.</p>
+            </div>
+        </div>
+        
+        <!-- Memory Feature -->
+        <div class="col-md-4">
+            <div class="feature">
+                <img src="img/memory1.webp" alt="Memory">
+                <h4>Reliable and Fast Memory</h4>
+                <p>Choose from a range of RAM to keep your PC running smoothly.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-if (isset($_SESSION['user_id'])) {
-    echo "<a href='products.php' class='btn btn-primary'>View Products</a>";
-} else {
-    echo "<a href='register.php' class='btn btn-success'>Register</a> or <a href='login.php' class='btn btn-info'>Login</a>";
-}
-echo "</div>";
-
-include 'includes/footer.php'; // Include footer
-?>
+<?php include 'includes/footer.php'; ?>
