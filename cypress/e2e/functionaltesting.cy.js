@@ -26,6 +26,6 @@ describe('Add Product to Cart', () => {
       });
       cy.get('.alert').should('contain', 'Product added to cart!'); // Check success message
       cy.get('a').contains('View Cart').click(); // Navigate to cart page
-      cy.get('.cart-item').should('have.length.greaterThan', 0); // Verify cart has at least 1 item
+      cy.get('table tbody tr').should('have.length.greaterThan', 0); // Verify cart has at least 1 item
   });
 });

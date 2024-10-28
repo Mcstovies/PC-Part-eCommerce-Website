@@ -38,7 +38,7 @@ if (!empty($_SESSION['cart'])) {
 
         echo "<tr>";
         echo "<td>" . $product['name'] . "</td>";
-        echo "<td>$" . $product['price'] . "</td>";
+        echo "<td>£" . $product['price'] . "</td>";
         echo "<td>";
         // Update quantity form
         echo "<form method='POST' action=''>";
