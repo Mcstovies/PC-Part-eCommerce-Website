@@ -35,8 +35,6 @@ Prerequisites
 
     Clone the Repository:
 
-    bash
-
     git clone https://github.com/your-username/mkpc-ecommerce.git
 
     Setup Database:
