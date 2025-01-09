@@ -59,6 +59,12 @@ Prerequisites
     Database Design: Designed and implemented a normalized MySQL database, including foreign key constraints.
     Testing: Developed Cypress tests for critical user flows, learning the value of automated testing in maintaining project quality.
 
+## To-Do List
+    Create CI/CD Pipeline with GitHub Actions
+    Create more user and product data for data
+    Add payment details entry
+    
+
 Acknowledgments
 
 This project was completed as part of the CodeSpace bootcamp, where I learned and applied the fundamentals of full-stack development. Thanks to the instructors and mentors at CodeSpace for their guidance and support!
